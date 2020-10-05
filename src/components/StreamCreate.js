@@ -1,25 +1,35 @@
 import React from 'react';
 import {Field, reduxForm} from 'redux-form';
 
-const StreamCreate = () => {
-    const renderInput = ({ input }) => {
-        console.log(input);
-        return <input {...input} />
-    }
 
-    return (
-            <form className="ui form">
-                <div className="field">
-                    <label htmlFor="title">Enter a title</label>
-                    <Field name="title" component={renderInput} />
-                </div>
-                <div className="field">
-                    <label htmlFor="description">Enter a description</label>
-                    <Field name="description" component={renderInput} />
-                </div>
-                <button className="ui button primary" type="submit">Submit</button>
-            </form>
+const StreamCreate = () => {
+       return (
+        <form className="ui form error">
+            <Field name="title" component={renderInput} label="Enter a title:"/>
+            <Field name="description" component={renderInput} label="Enter a description:"/>
+            <button className="ui button primary" type="submit">Submit</button>
+        </form>
     );
 };
 
-export default reduxForm({form: 'streamCreate'})(StreamCreate)
+const renderInput = ({input, meta, label}) => {
+    const error = meta.touched && meta.error ? <div className="ui message error"><div className="header">{meta.error}</div></div> : null;
+    return (
+        <div className= {`field ${meta.touched && meta.error ? 'error' : ''}`}>
+            <label>{label}</label>
+            <input {...input} autoComplete="off"/>
+            {error}
+        </div>
+    );
+};
+
+const validateForm = (formValues) => {
+    const errors = {};
+    if (!formValues.title)
+        errors.title = 'Title is required';
+    if (!formValues.description)
+        errors.description = 'Description is required';
+    return errors;
+};
+
+export default reduxForm({form: 'streamCreate', validate: validateForm})(StreamCreate)
