@@ -1,19 +1,3 @@
-## TODO
-
-- [ ] Header
-    - [ ] Google Authentication
-    - [ ] Home link
-- [ ] Streams
-    - [ ] List
-    - [ ] Edit
-    - [ ] Delete
-    - [ ] New
-        - [ ] Action creator
-        - [ ] Redux Form Validation
-    
-
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
