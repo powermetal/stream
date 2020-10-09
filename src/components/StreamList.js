@@ -1,6 +1,7 @@
 import React from 'react';
 import {fetchStreams} from '../actions'
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 class StreamList extends React.Component {
     componentDidMount() {
@@ -11,12 +12,12 @@ class StreamList extends React.Component {
         if (this.props.userId === stream.userId) {
             return (
                 <div>
-                    <div className="ui primary button">Edit</div>
+                    <Link to={`/streams/edit/${stream.id}`}><div className="ui primary button">Edit</div></Link>
                     <div className="ui button">Delete</div>
                 </div>
             )
         }
-    }
+    };
 
     renderList = () => {
         return this.props.streams.map((stream) => {
@@ -42,7 +43,14 @@ class StreamList extends React.Component {
     render() {
         return (
             <div>
-                <h2>Streams</h2>
+                <div className="ui secondary menu">
+                    <h2>Streams</h2>
+                    <div className="right menu">
+                        <Link to="/streams/new">
+                            <div className="ui primary button right floated">New Stream</div>
+                        </Link>
+                    </div>
+                </div>
                 <div className="ui cards">
                     {this.renderList()}
                 </div>
