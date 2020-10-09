@@ -6,7 +6,7 @@ import { createStream } from '../actions';
 
 const StreamCreate = (props) => {
     const onSubmit = (formValues) => {
-        props.createStream(formValues)
+        props.createStream(formValues, props.userId)
     }
 
     return (
@@ -40,7 +40,13 @@ const validateForm = (formValues) => {
     return errors;
 };
 
-export default connect(null, {createStream})(reduxForm({
+const mapStateToProps = (state) => {
+    return {
+        userId: state.auth.userId
+    }
+}
+
+export default connect(mapStateToProps, {createStream})(reduxForm({
     form: 'streamCreate',
     validate: validateForm
 })(StreamCreate));
