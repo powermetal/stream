@@ -2,10 +2,11 @@ import React from 'react';
 import { Router, Route} from 'react-router-dom';
 import history from "../history";
 
-import StreamList from './StreamList';
+import StreamList from './streams/StreamList';
 import Header from './Header';
-import StreamEdit from "./StreamEdit";
-import StreamCreate from "./StreamCreate";
+import StreamEdit from "./streams/StreamEdit";
+import StreamCreate from "./streams/StreamCreate";
+import StreamDelete from "./streams/StreamDelete";
 
 const App = () => {
     return (
@@ -16,6 +17,7 @@ const App = () => {
                 <Route path='/streams' exact component={StreamList} />
                 <Route path='/streams/new' exact component={StreamCreate} />
                 <Route path='/streams/edit/:id' exact component={StreamEdit} />
+                <Route path='/streams/delete/:id' exact component={StreamDelete} />
             </Router>
         </div>
     );

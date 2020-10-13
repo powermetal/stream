@@ -5,6 +5,7 @@ import {
     EDIT_STREAM,
     FETCH_STREAMS,
     FETCH_STREAM,
+    DELETE_STREAM,
     SIGN_IN,
     SIGN_OUT
 } from './types';
@@ -30,6 +31,12 @@ export const editStream = (formValues, id) => async dispatch => {
     dispatch({type: EDIT_STREAM, payload: response.data})
     history.push('/');
 };
+
+export const deleteStream = (id) => async dispatch => {
+    await streams.delete(`/streams/${id}`)
+    dispatch({type: DELETE_STREAM, payload: id})
+    history.push('/');
+}
 
 export const signIn = (userId) => {
     return {

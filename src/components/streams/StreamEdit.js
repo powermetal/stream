@@ -1,7 +1,7 @@
 import React from 'react';
 import StreamForm from "./StreamForm";
 import {connect} from 'react-redux';
-import {editStream, fetchStream} from '../actions';
+import {editStream, fetchStream} from '../../actions';
 
 class StreamEdit extends React.Component {
     componentDidMount() {

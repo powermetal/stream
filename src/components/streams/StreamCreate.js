@@ -1,7 +1,7 @@
 import React from 'react';
 import StreamForm from './StreamForm';
 import {connect} from 'react-redux';
-import {createStream} from '../actions';
+import {createStream} from '../../actions';
 
 
 const StreamCreate = (props) => {
